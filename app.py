@@ -9,19 +9,19 @@ def index():
 
 @app.route('/show_employees')
 def show_employees():
-    return '<h1>Lista pracowników</h1>'
+    return render_template("show_employees.html")
 
 @app.route('/show_products')
 def show_products():
-    return "<h1>Lista produktów</h1>"
+    return render_template("show_products.html")
 
 @app.route('/about')
 def about():
-    return "<h1>Strona o programie</h1>"
+    return render_template("about.html")
 
 @app.route('/tests')
 def tests():
-    return "<h1>Strona do testów</h1>"
+    return render_template("tests.html")
 
 if __name__ == '__main__':
     app.run(debug=True,port=80)
@@ -32,3 +32,4 @@ if __name__ == '__main__':
 #52. Dodaj do programu obsługe ekranów "/show_products", "/about", "/tests" i "/" (strona główna)
 #53. Zadbaj o to by każdy ekran posiadał swój plik html i by był on pokazywany przy wejsciu na adres.
 #    Każdy z tych plików html powinien mieć jakiś napis np. <h1>DUPA</h1>
+#54. Zadbaj o to by na każdym ekranie było menu z linkami do wszystkich ekranów
