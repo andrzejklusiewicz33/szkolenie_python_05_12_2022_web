@@ -1,4 +1,5 @@
 import psycopg2
+import settings
 from domain import *
 #
 # def get_all():
@@ -15,7 +16,7 @@ from domain import *
 
 def get_all():
     employees = []
-    with psycopg2.connect(host='localhost',database='postgres',port=5432, user='mapet',password='dupa') as connection:
+    with psycopg2.connect(host=settings.host,database=settings.database,port=settings.port, user=settings.user,password=settings.password) as connection:
         cursor=connection.cursor()
         cursor.execute("select * from pracownicy")
         for w in cursor:

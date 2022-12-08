@@ -96,3 +96,7 @@ if __name__ == '__main__':
 # /product_details odbierz od funkcji z dao ten obiekt i przekaz do widoku. Na widoku wyswietl go w formie tabeli.
 
 #63. Zadbaj o to by w ekranie listy produktów wyświetlić dane pochodzące z bazy
+
+#PRZERWA OBIADOWA DO 13:22
+
+#64. Zadbaj o to by wszystkie dane do łączenia się z bazą (host,hasło etc) pochodziły z jednego pliku konfiguracyjnego.
