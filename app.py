@@ -2,6 +2,8 @@ from flask import Flask,render_template
 import random
 from domain import *
 import employees_dao as edao
+import products_dao as pdao
+
 
 app = Flask(__name__)
 
@@ -12,20 +14,14 @@ def index():
 
 @app.route('/show_employees')
 def show_employees():
-    employees=edao.get_all()
-    for e in employees:
-        print(e)
-    return render_template("show_employees.html")
+    # employees=edao.get_all()
+    # for e in employees:
+    #     print(e)
+    return render_template("show_employees.html",employees=edao.get_all())
 
 @app.route('/show_products')
 def show_products():
-    products=[]
-    p1=Product(1,"Bulbulator",1000,"robi bul bul",10)
-    products.append(p1)
-    p2=Product(2,"Przyczłap do bulbulatora",200,"Taki wihajster co ten no wiadomo",2)
-    products.append(p2)
-    p3=Product(3,"Dzyndzel do przyczłapa",50,"Taki teges z tym że ten",0)
-    products.append(p3)
+    products=pdao.get_all()
     for p in products:
         print(p)
     return render_template("show_products.html")
@@ -70,3 +66,5 @@ if __name__ == '__main__':
 
 #58. Oddeleguj do metody get_all() w products_dao tworzenie (i zwracanie) listy obiektów klasy Product
 # W kontrolerze ekranu show products wykorzystaj ta metodę do odebrania danych ktore wyswietlasz
+
+#59. Wyświetl na ekranie show_products w tabelce nazwy, ceny i stany magazynowe wszystkich produktów
