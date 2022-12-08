@@ -24,6 +24,10 @@ def employee_details():
     id=request.args.get('id')
     return render_template("employee_details.html",employee=edao.get_one(id))
 
+@app.route('/add_employee')
+def add_employee():
+    return render_template("add_employee.html")
+
 @app.route('/show_products')
 def show_products():
     # products=pdao.get_all()
@@ -102,3 +106,5 @@ if __name__ == '__main__':
 #64. Zadbaj o to by wszystkie dane do łączenia się z bazą (host,hasło etc) pochodziły z jednego pliku konfiguracyjnego.
 
 #65. Przerób funkcję get_one(id) w product_dao w taki sposób by pobierała dane z bazy.
+
+#66. Na ekranie listy produktów dodaj link do dodawania produktu i stwórz do niego plik html i kontroler który wyswietli ten html

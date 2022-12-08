@@ -22,6 +22,14 @@ def get_all():
             products.append(product)
     return products
 
+# def get_one(id):
+#     product=Product(id,"Przykładowy obiekt",50,'opis przykładowego obiektu który może być bardzo długi',3)
+#     return product
+
 def get_one(id):
-    product=Product(id,"Przykładowy obiekt",50,'opis przykładowego obiektu który może być bardzo długi',3)
-    return product
+    with psycopg2.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user, password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(f"select * from produkty where id_produktu={id}")
+        w=cursor.fetchone()
+        product = Product(w[0], w[1], w[2], w[3], w[4])
+        return product
