@@ -7,6 +7,8 @@
 <body>
 {% include 'menu.html' %}
 <h1>Lista produktów - plik html</h1>
+
+<a href="/add_product">Dodaj produkt</a>
 <table border="1">
     <tr><th>Nazwa</th><td>Cena</td><td>Stan</td><td>Akcje</td></tr>
     {% for p in products %}

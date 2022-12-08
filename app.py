@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect
 import random
 from domain import *
 import employees_dao as edao
@@ -28,6 +28,18 @@ def employee_details():
 def add_employee():
     return render_template("add_employee.html")
 
+@app.route('/add_employee',methods=['POST'])
+def add_product_post():
+    #print("request.form=",request.form)
+    first_name=request.form['first_name']
+    last_name=request.form['last_name']
+    salary=request.form['salary']
+    comment=request.form['comment']
+    employee=Employee(None,first_name,last_name, salary, comment)
+    print(f'employee={employee}')
+    return redirect('/show_employees')
+
+
 @app.route('/show_products')
 def show_products():
     # products=pdao.get_all()
@@ -39,6 +51,10 @@ def show_products():
 def product_details():
     id=request.args.get('id')
     return render_template("product_details.html",product=pdao.get_one(id))
+
+@app.route('/add_product')
+def add_product():
+    return render_template("add_product.html")
 
 
 @app.route('/about')
@@ -108,3 +124,7 @@ if __name__ == '__main__':
 #65. Przerób funkcję get_one(id) w product_dao w taki sposób by pobierała dane z bazy.
 
 #66. Na ekranie listy produktów dodaj link do dodawania produktu i stwórz do niego plik html i kontroler który wyswietli ten html
+
+#67.Do formularza dodawania produktu dodaj pola do wprowadzania danych oraz guzik zatwierdzenia. Po
+# naciśnięciu guzika zatwierdzenia chcemy odebrać dane z formularza i stworzyć obiekt klasy Product
+# z tych danych. Następnie wyświetl obiekt na konsoli.
