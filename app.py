@@ -29,14 +29,14 @@ def add_employee():
     return render_template("add_employee.html")
 
 @app.route('/add_employee',methods=['POST'])
-def add_product_post():
+def add_employee_post():
     #print("request.form=",request.form)
     first_name=request.form['first_name']
     last_name=request.form['last_name']
     salary=request.form['salary']
     comment=request.form['comment']
     employee=Employee(None,first_name,last_name, salary, comment)
-    print(f'employee={employee}')
+    edao.save(employee)
     return redirect('/show_employees')
 
 
@@ -56,6 +56,15 @@ def product_details():
 def add_product():
     return render_template("add_product.html")
 
+@app.route('/add_product',methods=['POST'])
+def add_product_post():
+    name=request.form['name']
+    price=request.form['price']
+    description=request.form['description']
+    stock=request.form['stock']
+    product=Product(None,name,price,description,stock)
+    print(f'product={product}')
+    return redirect("/show_products")
 
 @app.route('/about')
 def about():
@@ -128,3 +137,9 @@ if __name__ == '__main__':
 #67.Do formularza dodawania produktu dodaj pola do wprowadzania danych oraz guzik zatwierdzenia. Po
 # naciśnięciu guzika zatwierdzenia chcemy odebrać dane z formularza i stworzyć obiekt klasy Product
 # z tych danych. Następnie wyświetl obiekt na konsoli.
+
+#Bootstrap
+
+#PRZERWA DO 14:40
+
+#68. Zadbaj o to żeby dane wprowadzane przez formularz dodawania produktu trafiały do bazy.
