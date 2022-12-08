@@ -11,6 +11,15 @@ def index():
 
 @app.route('/show_employees')
 def show_employees():
+    employees=[]
+    e1=Employee(1,"Ferdynand","Kiepski",6000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
+    employees.append(e1)
+    e2 = Employee(2, "Młody", "Kiepski", 3000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
+    employees.append(e2)
+    e3 = Employee(3, "Babka", "Kiepska", 8000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
+    employees.append(e3)
+    for e in employees:
+        print(e)
     return render_template("show_employees.html")
 
 @app.route('/show_products')
@@ -19,7 +28,8 @@ def show_products():
 
 @app.route('/about')
 def about():
-    return render_template("about.html",first_name="Andrzej",last_name="Klusiewicz",email="klusiewicz@jsystems.pl")
+    author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
+    return render_template("about.html",author=author,products=pdao.get_all())
 
 
 @app.route('/tests')
@@ -46,3 +56,10 @@ if __name__ == '__main__':
 #Dodaj do niej konstruktor sparametryzowany który będzie uzupełniał wszystkie pola obiektów tej klasy.
 #Przerób kontroler ekranu about w taki sposob by nie przekazywac imienia, nazwiska, emaila osobno tylko
 #poprzez obiekt który stworzysz (uzupełniajac przez konstruktor sparametryzowany) w kontrolerze.
+
+#przerwa do 10:10
+
+#57.W domenie stwórz klasę Product z polami product_id,name,price,opis,stock. Klasa Product powinna też posiadać
+#konstruktor sparametryzowany oraz przesłoniętą metodę __str__.
+# W kontrolerze ekranu show_products stwórz listę obiektów klasy Product i przeiteruj po niej wyświetlając
+#na konsoli każdy z jej elementów
