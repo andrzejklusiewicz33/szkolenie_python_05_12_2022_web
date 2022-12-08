@@ -12,3 +12,8 @@ def get_all():
                   "jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
     employees.append(e3)
     return employees
+
+
+def get_one(id):
+    employee = Employee(id, "Andrzej", "Kowalski", 100000, "Dobry pracownik (pije i nie kabluje)")
+    return employee

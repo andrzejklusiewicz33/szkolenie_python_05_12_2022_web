@@ -16,7 +16,9 @@
         {% else %}
                 <font color="#006400"><b>{{ p.stock }}</b></font>
         {% endif %}
-        </td><td>---</td></tr>
+        </td><td>
+            <a href="/product_details?id={{ p.product_id }}">Pokaż szczegóły</a>
+        </td></tr>
     {% endfor %}
 </table>
 </body>

@@ -19,17 +19,24 @@ def show_employees():
     #     print(e)
     return render_template("show_employees.html",employees=edao.get_all())
 
+@app.route('/employee_details')
+def employee_details():
+    id=request.args.get('id')
+    return render_template("employee_details.html",employee=edao.get_one(id))
+
 @app.route('/show_products')
 def show_products():
     # products=pdao.get_all()
     # for p in products:
     #     print(p)
     return render_template("show_products.html",products=pdao.get_all())
-@app.route('/employee_details')
-def employee_details():
+
+@app.route('/product_details')
+def product_details():
     id=request.args.get('id')
-    print(f'Szczegóły pracownika o id={id}')
-    return render_template("employee_details.html")
+    print(f'szczegóły produktu o id={id}')
+    return render_template("product_details.html")
+
 
 @app.route('/about')
 def about():
@@ -83,3 +90,8 @@ if __name__ == '__main__':
 
 #61. Dorób link prowadzący do ekranu szczegółów produktu - przekazując do niego id produktu przez pasek.
 #W ekranie szczegółów produktu odbierz id i wyświetl je na konsoli.
+
+#HTML + CSS
+
+#62. Do product_dao dodaj funkcję get_one(id) która bedzie zwracała obiekt klasy Product. W kontrolerze widoku
+# /product_details odbierz od funkcji z dao ten obiekt i przekaz do widoku. Na widoku wyswietl go w formie tabeli.

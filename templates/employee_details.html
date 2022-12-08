@@ -7,6 +7,12 @@
 <body>
 {% include 'menu.html' %}
 <h1>Szczegóły pracownika</h1>
-
+<table border="1">
+    <tr><th>Id pracownika</th><td>{{ employee.employee_id }}</td></tr>
+    <tr><th>Imię</th><td>{{ employee.first_name }}</td></tr>
+    <tr><th>Nazwisko</th><td>{{ employee.last_name }}</td></tr>
+    <tr><th>Zarobki</th><td>{{ employee.salary }}</td></tr>
+    <tr><th>Komentarz</th><td>{{ employee.comment }}</td></tr>
+</table>
 </body>
 </html>
