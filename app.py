@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 import random
 from domain import *
 import employees_dao as edao
@@ -25,6 +25,11 @@ def show_products():
     # for p in products:
     #     print(p)
     return render_template("show_products.html",products=pdao.get_all())
+@app.route('/employee_details')
+def employee_details():
+    id=request.args.get('id')
+    print(f'Szczegóły pracownika o id={id}')
+    return render_template("employee_details.html")
 
 @app.route('/about')
 def about():
@@ -71,3 +76,10 @@ if __name__ == '__main__':
 
 #60. Na liście produktów jeśli stan magazynowy jest zero to powininen się wyświetlać na czerwono pogrubiony,
 #a jeśli nie jest równy zero to na ciemnozielono pogrubiony.
+
+
+#przerwa do 11:34
+
+
+#61. Dorób link prowadzący do ekranu szczegółów produktu - przekazując do niego id produktu przez pasek.
+#W ekranie szczegółów produktu odbierz id i wyświetl je na konsoli.
