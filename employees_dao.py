@@ -25,6 +25,14 @@ def get_all():
     return employees
 
 
+# def get_one(id):
+#     employee = Employee(id, "Andrzej", "Kowalski", 100000, "Dobry pracownik (pije i nie kabluje)")
+#     return employee
+
 def get_one(id):
-    employee = Employee(id, "Andrzej", "Kowalski", 100000, "Dobry pracownik (pije i nie kabluje)")
-    return employee
+    with psycopg2.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user,  password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(f"select * from pracownicy where id_pracownika={id}")
+        w=cursor.fetchone()
+        employee = Employee(w[0], w[1], w[2], w[3], w[4])
+        return employee

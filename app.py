@@ -100,3 +100,5 @@ if __name__ == '__main__':
 #PRZERWA OBIADOWA DO 13:22
 
 #64. Zadbaj o to by wszystkie dane do łączenia się z bazą (host,hasło etc) pochodziły z jednego pliku konfiguracyjnego.
+
+#65. Przerób funkcję get_one(id) w product_dao w taki sposób by pobierała dane z bazy.
