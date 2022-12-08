@@ -8,5 +8,24 @@
 {% include 'menu.html' %}
 <h1>Strona do testów - plik html</h1>
 <h1><font color="red">{{ x }}</font></h1>
+{{ fruits }}
+<ol>
+{% for f in fruits %}
+    <li>{{ f }}</li>
+{% endfor %}
+</ol>
+<hr>
+<ul>
+    {% for n in numbers %}
+        <li>
+            {% if n>10 %}
+                <font color="red"><b>{{ n }}</b></font>
+            {% else %}
+                <font color="#006400"><b>{{ n }}</b></font>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+<h3><font color="{{ fruit.color }}">{{ fruit.name }} {{ fruit.color }}</font></h3>
 </body>
 </html>

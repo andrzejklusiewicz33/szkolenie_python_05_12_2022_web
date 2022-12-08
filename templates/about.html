@@ -7,5 +7,11 @@
 <body>
 {% include 'menu.html' %}
 <h1>Strona o programie - plik html</h1>
+<h2>Autor programu:</h2>
+<table border="1">
+    <tr><th>Imię</th><td>{{ first_name }}</td></tr>
+    <tr><th>Nazwisko</th><td>{{ last_name }}</td></tr>
+    <tr><th>Email</th><td>{{ email }}</td></tr>
+</table>
 </body>
 </html>
