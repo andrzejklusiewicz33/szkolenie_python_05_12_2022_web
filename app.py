@@ -21,7 +21,9 @@ def about():
 
 @app.route('/tests')
 def tests():
-    return render_template("tests.html")
+    zwierze="toperz"
+    return render_template("tests.html", x=zwierze)
+    #return render_template("tests.html",x="nietoperz")
 
 if __name__ == '__main__':
     app.run(debug=True,port=80)
@@ -33,3 +35,4 @@ if __name__ == '__main__':
 #53. Zadbaj o to by każdy ekran posiadał swój plik html i by był on pokazywany przy wejsciu na adres.
 #    Każdy z tych plików html powinien mieć jakiś napis np. <h1>DUPA</h1>
 #54. Zadbaj o to by na każdym ekranie było menu z linkami do wszystkich ekranów
+#55. Przekaż do widoku /about swoje imię,nazwisko i email i wyświetl je na poziomie widoku
