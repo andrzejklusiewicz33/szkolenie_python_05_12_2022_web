@@ -1,6 +1,7 @@
 from flask import Flask,render_template
 import random
 from domain import *
+import employees_dao as edao
 
 app = Flask(__name__)
 
@@ -11,19 +12,22 @@ def index():
 
 @app.route('/show_employees')
 def show_employees():
-    employees=[]
-    e1=Employee(1,"Ferdynand","Kiepski",6000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
-    employees.append(e1)
-    e2 = Employee(2, "Młody", "Kiepski", 3000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
-    employees.append(e2)
-    e3 = Employee(3, "Babka", "Kiepska", 8000,"jakiś długi komentarz do pracownika. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. Srutututu pęczek drutu. ")
-    employees.append(e3)
+    employees=edao.get_all()
     for e in employees:
         print(e)
     return render_template("show_employees.html")
 
 @app.route('/show_products')
 def show_products():
+    products=[]
+    p1=Product(1,"Bulbulator",1000,"robi bul bul",10)
+    products.append(p1)
+    p2=Product(2,"Przyczłap do bulbulatora",200,"Taki wihajster co ten no wiadomo",2)
+    products.append(p2)
+    p3=Product(3,"Dzyndzel do przyczłapa",50,"Taki teges z tym że ten",0)
+    products.append(p3)
+    for p in products:
+        print(p)
     return render_template("show_products.html")
 
 @app.route('/about')
@@ -63,3 +67,6 @@ if __name__ == '__main__':
 #konstruktor sparametryzowany oraz przesłoniętą metodę __str__.
 # W kontrolerze ekranu show_products stwórz listę obiektów klasy Product i przeiteruj po niej wyświetlając
 #na konsoli każdy z jej elementów
+
+#58. Oddeleguj do metody get_all() w products_dao tworzenie (i zwracanie) listy obiektów klasy Product
+# W kontrolerze ekranu show products wykorzystaj ta metodę do odebrania danych ktore wyswietlasz

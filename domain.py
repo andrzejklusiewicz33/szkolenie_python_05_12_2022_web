@@ -1,6 +1,3 @@
-from builtins import float
-
-
 class Fruit:
     def __init__(self,name,color):
         self.name=name
@@ -20,5 +17,15 @@ class Employee:
         self.last_name=last_name
         self.salary=salary
         self.comment=comment
+    def __str__(self):
+        return str(self.__dict__)
+
+class Product:
+    def __init__(self,product_id,name,price,description,stock):
+        self.product_id=product_id
+        self.name=name
+        self.price=price
+        self.description=description
+        self.stock=stock
     def __str__(self):
         return str(self.__dict__)
