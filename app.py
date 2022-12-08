@@ -21,10 +21,10 @@ def show_employees():
 
 @app.route('/show_products')
 def show_products():
-    products=pdao.get_all()
-    for p in products:
-        print(p)
-    return render_template("show_products.html")
+    # products=pdao.get_all()
+    # for p in products:
+    #     print(p)
+    return render_template("show_products.html",products=pdao.get_all())
 
 @app.route('/about')
 def about():
@@ -68,3 +68,6 @@ if __name__ == '__main__':
 # W kontrolerze ekranu show products wykorzystaj ta metodę do odebrania danych ktore wyswietlasz
 
 #59. Wyświetl na ekranie show_products w tabelce nazwy, ceny i stany magazynowe wszystkich produktów
+
+#60. Na liście produktów jeśli stan magazynowy jest zero to powininen się wyświetlać na czerwono pogrubiony,
+#a jeśli nie jest równy zero to na ciemnozielono pogrubiony.
