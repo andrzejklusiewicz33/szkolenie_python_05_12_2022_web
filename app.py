@@ -39,6 +39,16 @@ def add_employee_post():
     edao.save(employee)
     return redirect('/show_employees')
 
+@app.route('/delete_employee')
+def delete_employee():
+    id=request.args.get('id')
+    return render_template("delete_employee.html",employee=edao.get_one(id))
+
+@app.route('/delete_employee',methods=['POST'])
+def delete_employee_post():
+    id=request.args.get('id')
+    edao.delete(id)
+    return redirect("/show_employees")
 
 @app.route('/show_products')
 def show_products():
@@ -63,7 +73,7 @@ def add_product_post():
     description=request.form['description']
     stock=request.form['stock']
     product=Product(None,name,price,description,stock)
-    print(f'product={product}')
+    pdao.save(product)
     return redirect("/show_products")
 
 @app.route('/about')
@@ -143,3 +153,5 @@ if __name__ == '__main__':
 #PRZERWA DO 14:40
 
 #68. Zadbaj o to żeby dane wprowadzane przez formularz dodawania produktu trafiały do bazy.
+
+#69. Dodaj funkcjonalność kasowania produktów

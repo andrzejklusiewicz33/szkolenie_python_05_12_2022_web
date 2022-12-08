@@ -14,6 +14,7 @@
         <tr><td>{{ e.first_name }}</td><td>{{ e.last_name }}</td>
             <td>
                 <a href="/employee_details?id={{e.employee_id}}">Szczegóły pracownika</a>
+                <a href="/delete_employee?id={{ e.employee_id }}">Kasuj pracownika</a>
             </td></tr>
     {% endfor %}
 </table>
