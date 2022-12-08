@@ -7,5 +7,12 @@
 <body>
 {% include 'menu.html' %}
 <h1>Szczegóły produktu</h1>
+<table border="1">
+    <tr><th>Id produktu</th><td>{{ product.product_id }}</td></tr>
+    <tr><th>Nazwa</th><td>{{ product.name }}</td></tr>
+    <tr><th>Cena</th><td>{{ product.price }}</td></tr>
+    <tr><th>Opis</th><td>{{ product.description }}</td></tr>
+    <tr><th>Stan magazynowy</th><td>{{ product.stock }}</td></tr>
+</table>
 </body>
 </html>

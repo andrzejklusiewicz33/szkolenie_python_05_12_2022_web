@@ -9,3 +9,7 @@ def get_all():
     p3 = Product(3, "Dzyndzel do przyczłapa", 50, "Taki teges z tym że ten", 0)
     products.append(p3)
     return products
+
+def get_one(id):
+    product=Product(id,"Przykładowy obiekt",50,'opis przykładowego obiektu który może być bardzo długi',3)
+    return product

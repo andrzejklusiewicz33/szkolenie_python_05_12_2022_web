@@ -34,8 +34,7 @@ def show_products():
 @app.route('/product_details')
 def product_details():
     id=request.args.get('id')
-    print(f'szczegóły produktu o id={id}')
-    return render_template("product_details.html")
+    return render_template("product_details.html",product=pdao.get_one(id))
 
 
 @app.route('/about')
@@ -95,3 +94,5 @@ if __name__ == '__main__':
 
 #62. Do product_dao dodaj funkcję get_one(id) która bedzie zwracała obiekt klasy Product. W kontrolerze widoku
 # /product_details odbierz od funkcji z dao ten obiekt i przekaz do widoku. Na widoku wyswietl go w formie tabeli.
+
+#63. Zadbaj o to by w ekranie listy produktów wyświetlić dane pochodzące z bazy
