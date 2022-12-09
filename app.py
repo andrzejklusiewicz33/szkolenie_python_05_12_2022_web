@@ -234,3 +234,7 @@ if __name__ == '__main__':
 #71. Zadbaj o to by na ekranie dostawy wyświetlala sie nazwa produktu dla ktorego robimy dostawę
 #    Dodatkowo zadbaj o to by id produktu dla ktorego robimy dostawe bylo przekazywane przez formularz a nie pasek
 #    w poscie tego ekranu
+
+
+#72. Dodaj funkcjonalność edycji produktu
+#update produkty set nazwa='nowa nazwa',cena=1000, opis='nowy opis', stan=50 where id_produktu=3
