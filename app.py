@@ -100,9 +100,11 @@ def product_delivery():
 
 @app.route('/product_delivery', methods=['POST'])
 def product_delivery_post():
-    id=request.args.get('id')
+    #id=request.args.get('id') #fuuuuu
+    id=request.form['product_id']
     count=request.form['x']
     pdao.delivery(id,count)
+    print(f'id={id}')
     return redirect("/show_products")
 
 @app.route('/about')

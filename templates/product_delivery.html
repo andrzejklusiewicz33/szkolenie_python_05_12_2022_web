@@ -8,6 +8,7 @@
 {% include 'menu.html' %}
 <h1>Dostawa produktu</h1>
 <form method="post">
+    <input type="hidden" value="{{ product.product_id }}" name="product_id"/>
     <p>Robisz dostawę dla <font color="red"><b>"{{ product.name }}"</b></font></p>
     <table border="1">
         <tr><th>Ilość dostarczona</th><td><input type="number"  value="0" name="x" required></td></tr>
