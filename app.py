@@ -327,3 +327,5 @@ if __name__ == '__main__':
 #select * from produkty where stan=0
 
 #76. Dodaj usługę sieciową ktora przyjmie jsonem id produktu i dostarczana ilosc i zrealizuje dostawę dla tego produktu
+
+#curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":1,\"count\":10}" http://localhost/post_me.json
