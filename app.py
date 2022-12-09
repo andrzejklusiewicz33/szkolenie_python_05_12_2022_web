@@ -152,6 +152,13 @@ def product_json():
     product=pdao.get_one(id )
     return product.__dict__
 
+@app.route('/products.json')
+def products_json():
+    # products=[p.__dict__ for p in pdao.get_all()]
+    # return products
+    return [p.__dict__ for p in pdao.get_all()]
+
+
 
 class Fruit(db.Model):
     __tablename__="fruits"
@@ -301,3 +308,8 @@ if __name__ == '__main__':
 
 #74. Stwórz usługę sieciową która odda nam listę produktów w zserializowanej postaci
 #. Dodaj link do menu
+
+#PRZERWA OBIADOWA DO 13:15
+
+#75. Dodaj usługę sieciową która będzie zwracała dane tylko o produktach których stan wynosi 0 (do zamówienia)
+#select * from produkty where stan=0
