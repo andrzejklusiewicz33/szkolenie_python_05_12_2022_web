@@ -54,3 +54,12 @@ def delivery(id,count):
         cursor = connection.cursor()
         cursor.execute(sql)
         connection.commit()
+
+
+#update produkty set nazwa='nowa nazwa',cena=1000, opis='nowy opis', stan=50 where id_produktu=3
+def update(product):
+    sql=f"update produkty set nazwa='{product.name}',cena={product.price}, opis='{product.description}', stan={product.stock}  where id_produktu={product.product_id}  "
+    with psycopg2.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user, password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        connection.commit()

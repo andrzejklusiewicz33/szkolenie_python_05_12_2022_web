@@ -106,10 +106,37 @@ def product_delivery_post():
     pdao.delivery(id,count)
     return redirect("/show_products")
 
+
+@app.route('/edit_product')
+def edit_product():
+    id=request.args.get('id')
+    product=pdao.get_one(id)
+    #print(f'product={product}')
+    return render_template("edit_product.html",product=product)
+
+@app.route('/edit_product',methods=['POST'])
+def edit_product_post():
+    id=request.form['id']
+    name=request.form['name']
+    price=request.form['price']
+    description=request.form['description']
+    stock=request.form['stock']
+    product=Product(id,name,price,description,stock)
+    pdao.update(product)
+    return redirect('/show_products')
+
 @app.route('/about')
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
     return render_template("about.html",author=author,products=pdao.get_all())
+
+
+@app.route('/employee.json')
+def employees_json():
+    id=request.args.get('id')
+    employee=edao.get_one(id)
+    print(f"product={employee}")
+    return employee.__dict__
 
 
 class Fruit(db.Model):
@@ -238,3 +265,8 @@ if __name__ == '__main__':
 
 #72. Dodaj funkcjonalność edycji produktu
 #update produkty set nazwa='nowa nazwa',cena=1000, opis='nowy opis', stan=50 where id_produktu=3
+
+#przerwa do 11:57
+
+#73. Dodaj ekran pokazujący w postaci danych JSON obiekt produktu którego id przekażemy przez pasek.
+#Oczywiście dodaj też właściwy link na poziomie listy produktów

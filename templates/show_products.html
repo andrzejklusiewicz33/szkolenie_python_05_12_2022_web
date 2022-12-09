@@ -20,8 +20,10 @@
         {% endif %}
         </td><td>
             <a href="/product_details?id={{ p.product_id }}">Pokaż szczegóły</a>
+            <a href="/edit_product?id={{ p.product_id }}">Edytuj produkt</a>
             <a href="/delete_product?id={{ p.product_id }}">Kasuj produkt</a>
             <a href="/product_delivery?id={{ p.product_id }}">Dostawa</a>
+            <a href="/product.json?id={{ p.product_id }}">JSON</a>
         </td></tr>
     {% endfor %}
 </table>
