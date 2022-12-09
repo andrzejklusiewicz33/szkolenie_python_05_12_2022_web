@@ -159,6 +159,18 @@ def products_json():
     return [p.__dict__ for p in pdao.get_all()]
 
 
+@app.route('/to_order.json')
+def to_order_json():
+    #return  [p.__dict__ for p in pdao.get_all() if p.stock==0] #fuuuu bo wydajność - ciągniesz całą tabelę
+    return [p.__dict__ for p in pdao.get_to_order()]
+
+
+@app.route('/post_me.json',methods=['POST'])
+def post_me():
+    data=request.json
+    print(f'data={data}')
+    return 'ok'
+
 
 class Fruit(db.Model):
     __tablename__="fruits"
@@ -313,3 +325,5 @@ if __name__ == '__main__':
 
 #75. Dodaj usługę sieciową która będzie zwracała dane tylko o produktach których stan wynosi 0 (do zamówienia)
 #select * from produkty where stan=0
+
+#76. Dodaj usługę sieciową ktora przyjmie jsonem id produktu i dostarczana ilosc i zrealizuje dostawę dla tego produktu
