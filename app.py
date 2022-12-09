@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request,redirect
+from flask_sqlalchemy import SQLAlchemy
 import random
 from domain import *
 import employees_dao as edao
@@ -6,6 +7,9 @@ import products_dao as pdao
 
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://mapet:dupa@localhost/postgres'
+db=SQLAlchemy(app)
 
 
 @app.route('/')
@@ -88,20 +92,58 @@ def delete_product_post():
     pdao.delete(id)
     return redirect("/show_products")
 
+@app.route('/product_delivery')
+def product_delivery():
+    id=request.args.get('id')
+    product=pdao.get_one(id)
+    return render_template("product_delivery.html",product=product)
+
+@app.route('/product_delivery', methods=['POST'])
+def product_delivery_post():
+    id=request.args.get('id')
+    count=request.form['x']
+    pdao.delivery(id,count)
+    return redirect("/show_products")
+
 @app.route('/about')
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
     return render_template("about.html",author=author,products=pdao.get_all())
 
 
+class Fruit(db.Model):
+    __tablename__="fruits"
+    fruit_id=db.Column(db.Integer,name="fruit_id",primary_key=True)
+    fruit_name=db.Column(db.String,name="fruit_name",nullable=False)
+    def __str__(self):
+        return str(self.__dict__)
+
+def get_fruits():
+    return Fruit.query.all()
 @app.route('/tests')
 def tests():
-    zwierze="toperz"
-    owoce=['banan','gruszka','melon','truskawka']
-    liczby=[random.randint(1,20) for e in range(10)]
-    f=Fruit("banana","yellow")
-    return render_template("tests.html", x=zwierze,fruits=owoce,numbers=liczby,fruit=f)
-    #return render_template("tests.html",x="nietoperz")
+    #db.create_all()
+    # fruit1=Fruit()
+    # fruit1.fruit_id=1
+    # fruit1.fruit_name='banana'
+    # db.session.add(fruit1)
+    # fruit2 = Fruit()
+    # fruit2.fruit_id = 2
+    # fruit2.fruit_name = 'apple'
+    # db.session.add(fruit2)
+    # db.session.commit()
+    for f in get_fruits():
+        print(f)
+    return "OK"
+
+
+
+    # zwierze="toperz"
+    # owoce=['banan','gruszka','melon','truskawka']
+    # liczby=[random.randint(1,20) for e in range(10)]
+    # f=Fruit("banana","yellow")
+    # return render_template("tests.html", x=zwierze,fruits=owoce,numbers=liczby,fruit=f)
+    # #return render_template("tests.html",x="nietoperz")
 
 if __name__ == '__main__':
     app.run(debug=True,port=80)
@@ -184,3 +226,7 @@ if __name__ == '__main__':
 #8. Uruchom SQL który zmieni stan danego produktu:
 #update produkty set stan=stan+x where id_produktu=y
 #update produkty set stan=stan+10 where id_produktu=1
+
+
+#przerwa do 10:34
+

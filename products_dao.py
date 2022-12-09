@@ -47,3 +47,10 @@ def delete(id):
         cursor = connection.cursor()
         cursor.execute(sql)
         connection.commit()
+
+def delivery(id,count):
+    sql=f'update produkty set stan=stan+{count} where id_produktu={id}'
+    with psycopg2.connect(host=settings.host, database=settings.database, port=settings.port, user=settings.user, password=settings.password) as connection:
+        cursor = connection.cursor()
+        cursor.execute(sql)
+        connection.commit()
