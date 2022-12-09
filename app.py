@@ -104,7 +104,6 @@ def product_delivery_post():
     id=request.form['product_id']
     count=request.form['x']
     pdao.delivery(id,count)
-    print(f'id={id}')
     return redirect("/show_products")
 
 @app.route('/about')
@@ -232,3 +231,6 @@ if __name__ == '__main__':
 
 #przerwa do 10:34
 
+#71. Zadbaj o to by na ekranie dostawy wyświetlala sie nazwa produktu dla ktorego robimy dostawę
+#    Dodatkowo zadbaj o to by id produktu dla ktorego robimy dostawe bylo przekazywane przez formularz a nie pasek
+#    w poscie tego ekranu
