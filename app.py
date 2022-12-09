@@ -125,6 +125,11 @@ def edit_product_post():
     pdao.update(product)
     return redirect('/show_products')
 
+
+
+
+
+
 @app.route('/about')
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
@@ -132,11 +137,20 @@ def about():
 
 
 @app.route('/employee.json')
-def employees_json():
+def employee_json():
     id=request.args.get('id')
     employee=edao.get_one(id)
-    print(f"product={employee}")
     return employee.__dict__
+@app.route('/employees.json')
+def employees_json():
+    employees=edao.get_all()
+    return [e.__dict__ for e in employees]
+
+@app.route('/product.json')
+def product_json():
+    id=request.args.get('id')
+    product=pdao.get_one(id )
+    return product.__dict__
 
 
 class Fruit(db.Model):
@@ -270,3 +284,20 @@ if __name__ == '__main__':
 
 #73. Dodaj ekran pokazujący w postaci danych JSON obiekt produktu którego id przekażemy przez pasek.
 #Oczywiście dodaj też właściwy link na poziomie listy produktów
+
+#PRZYKŁAD KODU WYKORZYSTUJĄCEGO NASZE USŁUGI SIECIOWE (EMPLOYEES):
+# import requests
+# id=7
+# response=requests.get(f'http://localhost/employee.json?id={id}')
+# print(response.status_code)
+# print(response.json()['comment'])
+
+
+# import requests
+# response=requests.get(f'http://localhost/employees.json')
+# print(response.status_code)
+# for e in response.json():
+#     print(e['first_name'],e['last_name'])
+
+#74. Stwórz usługę sieciową która odda nam listę produktów w zserializowanej postaci
+#. Dodaj link do menu
