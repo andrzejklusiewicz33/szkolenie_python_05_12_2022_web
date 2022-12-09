@@ -76,6 +76,18 @@ def add_product_post():
     pdao.save(product)
     return redirect("/show_products")
 
+@app.route('/delete_product')
+def delete_product():
+    id=request.args.get('id')
+    product=pdao.get_one(id)
+    return render_template("delete_product.html",product=product)
+
+@app.route('/delete_product',methods=['POST'])
+def delete_product_post():
+    id=request.args.get('id')
+    pdao.delete(id)
+    return redirect("/show_products")
+
 @app.route('/about')
 def about():
     author=Author("Andrzej","Klusiewicz","klusiewicz@jsystems.pl")
@@ -155,3 +167,20 @@ if __name__ == '__main__':
 #68. Zadbaj o to żeby dane wprowadzane przez formularz dodawania produktu trafiały do bazy.
 
 #69. Dodaj funkcjonalność kasowania produktów
+
+#pandas, numpy, matplotlib
+
+
+#70. Dodaj funkcjonalność dostawy. Z listy produktów ma być link do formularza dostawy i po
+#wprowadzeniu ilości (której podanie jest wymagane a domyślna wartość wynosi zero) ekran powinien
+#powrócić do listy produktów.
+#1. Na liście produktów dodać link zawierający id produktu dla którego ma być dostawa
+#2. Dodać kontroler obsługujący geta na /product_delivery z plikiem html który ma zostać wyświetlony
+#3. Do pliku html dodaj formularz z wymaganym polem okreslajacym ilosc dostarczanych sztuk
+#4. Dodaj kontroler obsługujący posta na /product_delivery.
+#5. W obsłudze posta odczytaj id z paska i wartość która przyjdzie z formularza (wyprintuj sobie)
+#6. Do product dao dodaj funkcję delivery przyjmującą przez argumenty id produktu i ilosc dostarczaną
+#7. Przekaż z obsługi posta na /product_delivery dane o id i ilosci do stworzonej funkcji z dao
+#8. Uruchom SQL który zmieni stan danego produktu:
+#update produkty set stan=stan+x where id_produktu=y
+#update produkty set stan=stan+10 where id_produktu=1
