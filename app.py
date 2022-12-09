@@ -172,6 +172,14 @@ def post_me():
     return 'ok'
 
 
+@app.route('/delivery.json',methods=['POST'])
+def delivery_json():
+    data=request.json
+    id=data['id']
+    count=data['count']
+    pdao.delivery(id,count)
+    return 'ok'
+
 class Fruit(db.Model):
     __tablename__="fruits"
     fruit_id=db.Column(db.Integer,name="fruit_id",primary_key=True)
@@ -184,6 +192,7 @@ def get_fruits():
 @app.route('/tests')
 def tests():
     #db.create_all()
+    #db.create_all()
     # fruit1=Fruit()
     # fruit1.fruit_id=1
     # fruit1.fruit_name='banana'
@@ -193,7 +202,11 @@ def tests():
     # fruit2.fruit_name = 'apple'
     # db.session.add(fruit2)
     # db.session.commit()
-    for f in get_fruits():
+    # for f in get_fruits():
+    #     print(f)
+    # for f in Fruit.query.all():
+    #     print(f)
+    for f in Fruit.query.filter(Fruit.fruit_id>0).all():
         print(f)
     return "OK"
 
@@ -329,3 +342,20 @@ if __name__ == '__main__':
 #76. Dodaj usługę sieciową ktora przyjmie jsonem id produktu i dostarczana ilosc i zrealizuje dostawę dla tego produktu
 
 #curl -i -H "Content-Type:application/json" -X POST -d "{\"id\":1,\"count\":10}" http://localhost/post_me.json
+#
+# class Main{
+#     public static void main(args[]){
+#         System.out.println('dupa!');
+#     }
+# }
+#
+# print('dupa!')
+
+#scikit-learn
+#keras
+#tkinter,easygui
+
+#przerwa do 14:48
+
+#Terraform
+#Docker + Kubernetes

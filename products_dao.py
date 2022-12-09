@@ -1,7 +1,7 @@
 import psycopg2
 import settings
 from domain import *
-
+#connection=psycopg2.connect(host=settings.host,database=settings.database,port=settings.port, user=settings.user,password=settings.password)
 # def get_all():
 #     products = []
 #     p1 = Product(1, "Bulbulator", 1000, "robi bul bul", 10)
